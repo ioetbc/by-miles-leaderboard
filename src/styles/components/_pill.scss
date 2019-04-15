@@ -1,0 +1,29 @@
+.player {
+    padding: 0;
+    .card {
+        display: flex;
+        margin-top: 20px;
+        align-items: center;
+        .pill {
+            background: red;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-around;
+            flex: 1;        
+            li {
+                list-style: none;
+                padding: 20px 0;
+            }
+            &__remove {
+                cursor: pointer;
+                height: 25px;
+                width: 25px;
+                margin-left: 30px;
+            }
+            &__details {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+}
