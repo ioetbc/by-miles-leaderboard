@@ -17,6 +17,7 @@ class Leaderboard extends React.Component {
     }
 
     componentDidMount() {
+        console.log('fuvk')
         const json = localStorage.getItem('playerArr');
         const playerArr = JSON.parse(json);
         if (playerArr) this.setState(() => ({ playerArr }));
