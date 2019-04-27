@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { Provider } from 'react-redux';
-import AppRouter from './routers/AppRouter'
-import { history } from './routers/AppRouter'
-import { firebase, subscribe } from './firebase/firebase'
-import { login, logout } from './actions/auth'
-import configureStore from './store/configureStore'
+import AppRouter from './routers/AppRouter';
+import { history } from './routers/AppRouter';
+import { firebase, subscribe } from './firebase/firebase';
+import { login, logout } from './actions/auth';
+import { startSetPlayers } from './actions/players';
+import configureStore from './store/configureStore';
 export const store = configureStore()
 
 const jsx = (
@@ -25,8 +25,11 @@ const renderApp = () => {
 
 firebase.auth().onAuthStateChanged(user => {
   if(user) {
-      
-    // loadFirebaseData(user)
+        store.dispatch(login(user))
+        store.dispatch(startSetPlayers())
+        store.dispatch(startSetPlayers());
+        renderApp()
+
     if (history.location.pathname === '/') {
         history.push('/leaderboard')
     }
@@ -35,4 +38,4 @@ firebase.auth().onAuthStateChanged(user => {
     renderApp();
     history.push('/')
   }
-})
+});

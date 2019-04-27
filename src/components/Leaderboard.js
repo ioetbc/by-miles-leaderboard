@@ -1,11 +1,14 @@
 import React from 'react';
 
 import AddOption from './AddOption';
-import Options from './Options';
+import Players from './Players';
 import Header from './Header';
 import Action from './Action';
 import NewGame from './NewGame'
 import OptionModal from './OptionModal';
+
+// import "../styles/styles.scss";
+
 
 class Leaderboard extends React.Component {
     constructor(props) {
@@ -17,7 +20,6 @@ class Leaderboard extends React.Component {
     }
 
     componentDidMount() {
-        console.log('fuvk')
         const json = localStorage.getItem('playerArr');
         const playerArr = JSON.parse(json);
         if (playerArr) this.setState(() => ({ playerArr }));
@@ -86,7 +88,7 @@ class Leaderboard extends React.Component {
 
         return (
             <div>
-                <Header />
+                <Header title="Leaderboard" />
                 <div className="container">
                     {/*}<Action
                         hasOptions={playerArr.length > 0}
@@ -98,7 +100,7 @@ class Leaderboard extends React.Component {
                     {/*<NewGame
                         handleNewGame={this.handleNewGame}
                     />*/}
-                    <Options
+                    <Players
                         handleReset={this.handleReset}
                         handleDelete={this.handleDelete}
                         playerArr={playerArr}

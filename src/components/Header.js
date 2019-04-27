@@ -10,8 +10,4 @@ const Header = (props) => {
     )
 };
 
-Header.defaultProps = {
-    title: 'leaderboard'
-};
-
 export default Header;

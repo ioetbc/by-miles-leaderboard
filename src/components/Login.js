@@ -15,7 +15,6 @@ export class LoginPage extends React.Component {
   render() {
     return (
     <div id="login-page">
-        <h1>Leaderboard</h1>
         <button className="login-button" onClick={this.handleGoogleLogin}>Google Login</button>
     </div>
     )

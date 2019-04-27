@@ -1,6 +1,11 @@
 export const login = (player) => ({
     type: 'LOGIN',
-    player
+    player: {
+        uid: player.uid,
+        name: player.displayName,
+        email: player.email,
+        photoURL: player.photoURL,
+    }
 });
 
 export const logout = () => ({
