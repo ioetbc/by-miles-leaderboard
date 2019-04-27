@@ -14,8 +14,8 @@ const AppRouter = () => (
   <Router history={history}>
     <div className="container-fluid">
       <Switch>
-        <PublicRoute path="/" component={LoginPage} exact={true} />
-        <PrivateRoute path="/leaderboard" component={Leaderboard} exact={true} />
+        <PublicRoute path="/login" component={LoginPage} exact={true} />
+        <PrivateRoute path="/" component={Leaderboard} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
