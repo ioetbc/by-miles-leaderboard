@@ -1,15 +1,13 @@
-
-import database from '../firebase/firebase';
+import db, { firebase } from '../firebase';
 
 export const startSetPlayers = () => {
     return(dispatch, getState) => {
-        const { auth } = getState();
-        return database.ref('players').on('value', function(snapshot) {
+        return db.collection('players').onSnapshot(querySnapshot => {
             const players = []
-            snapshot.forEach(childSnapshot => {
+            querySnapshot.forEach(childSnapshot => {
                 players.push({
-                    uid: childSnapshot.key,
-                    ...childSnapshot.val()
+                    uid: childSnapshot.id,
+                    ...childSnapshot.data()
                 })
             });
             dispatch(setPlayers(players.sort((l, h) => l.position - h.position)));
@@ -27,18 +25,23 @@ export const won = (opponentId) => {
         const { auth, players } = getState();
         const me = players.find(player => player.uid === auth.uid);
         const opponent = players.find(player => player.uid === opponentId);
-
-        const updates = {
-            [`/players/${me.uid}`]: {
-                position: opponent.position,
-                gameCount: me.gameCount ++
-            },
-            [`/players/${opponentId}/position`]: {
-                position: me.position,
-                gameCount: opponent.gameCount ++
-            }
-        };
-
-        return database.ref().update(updates);
+        const batch = db.batch();
+        batch.update(db.collection('players').doc(me.uid), {
+            position: opponent.position,
+            gameCount: me.gameCount ++,
+            lastPlayed: firebase.firestore.Timestamp.fromDate(new Date())
+        });
+        batch.update(db.collection('players').doc(opponentId),{
+            position: me.position,
+            gameCount: opponent.gameCount ++,
+            lastPlayed: firebase.firestore.Timestamp.fromDate(new Date())
+        });
+        return batch.commit().then(() => {
+            db.collection('games').add({
+                winner: me.uid,
+                loser: opponent.uid,
+                playedAt: firebase.firestore.Timestamp.fromDate(new Date())
+            });
+        })
     }
 }

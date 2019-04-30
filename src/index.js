@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import { history } from './routers/AppRouter';
-import { firebase, subscribe } from './firebase/firebase';
+import { firebase, subscribe } from './firebase';
 import { login, logout } from './actions/auth';
 import { startSetPlayers } from './actions/players';
 import configureStore from './store/configureStore';

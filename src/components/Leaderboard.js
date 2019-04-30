@@ -7,7 +7,7 @@ import Action from './Action';
 import NewGame from './NewGame'
 import OptionModal from './OptionModal';
 
-// import "../styles/styles.scss";
+import "../styles/styles.scss";
 
 
 class Leaderboard extends React.Component {

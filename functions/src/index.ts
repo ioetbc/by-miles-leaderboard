@@ -7,14 +7,15 @@ admin.initializeApp();
 //
 
 export const createPlayer = functions.auth.user().onCreate((user, context) => {
-    admin.database().ref('players').once('value').then((snapshot) => {
+    const db = admin.firestore();
+    return db.collection('players').get().then((snapshot) => {
         const newPlayer = {
             name: user.displayName,
             email: user.email,
             photoURL: user.photoURL,
-            position: snapshot.numChildren() + 1,
+            position: snapshot.size + 1,
             gameCount: 0
         };
-        admin.database().ref(`players/${user.uid}`).set(newPlayer).catch((error) => console.log(error));
+        return db.collection('players').doc(user.uid).set(newPlayer).catch((error) => console.log(error));
     }).catch((error) => console.log(error));
 });

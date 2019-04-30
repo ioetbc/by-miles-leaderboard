@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { firebase, googleAuthProvider, githubAuthProvider } from '../firebase/firebase'
+import { firebase, googleAuthProvider } from '../firebase'
 import { login } from '../actions/auth'
 
 export class LoginPage extends React.Component {
