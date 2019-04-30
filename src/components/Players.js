@@ -13,7 +13,7 @@ const Players = (props) => {
             <ul className="player">
                 {props.players.map((p, i) => {
                     if (p.uid === props.auth.uid) return <You key={p.uid} player={p} />
-                    if (props.players[i - 1] === props.auth.uid) return <Opponent key={p.uid} opponent={p} />
+                    if (props.players[i + 1] && props.players[i + 1].uid === props.auth.uid) return <Opponent key={p.uid} opponent={p} />
                     return <Other key={p.uid} player={p} />
                 })}
             </ul>

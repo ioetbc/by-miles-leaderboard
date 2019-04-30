@@ -31,11 +31,11 @@ firebase.auth().onAuthStateChanged(user => {
         renderApp()
 
     if (history.location.pathname === '/') {
-        history.push('/leaderboard')
+        history.push('/')
     }
   } else {
     store.dispatch(logout())
     renderApp();
-    history.push('/')
+    history.push('/login')
   }
 });
