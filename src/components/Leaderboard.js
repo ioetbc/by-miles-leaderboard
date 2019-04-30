@@ -3,11 +3,8 @@ import React from 'react';
 import AddOption from './AddOption';
 import Players from './Players';
 import Header from './Header';
-import Action from './Action';
-import NewGame from './NewGame'
-import OptionModal from './OptionModal';
 
-import "../styles/styles.scss";
+import "../styles/style.scss";
 
 
 class Leaderboard extends React.Component {
@@ -90,16 +87,6 @@ class Leaderboard extends React.Component {
             <div>
                 <Header title="Leaderboard" />
                 <div className="container">
-                    {/*}<Action
-                        hasOptions={playerArr.length > 0}
-                        handlePick={this.handlePick}
-                    />*/}
-                    <AddOption
-                        handleAddOption={this.handleAddOption}
-                    />
-                    {/*<NewGame
-                        handleNewGame={this.handleNewGame}
-                    />*/}
                     <Players
                         handleReset={this.handleReset}
                         handleDelete={this.handleDelete}
@@ -107,10 +94,6 @@ class Leaderboard extends React.Component {
                         handleWinOrLose={this.handleWinOrLose}
                         handleDetails={this.handleDetails}
                     />
-                    {/*<OptionModal
-                        gameModal={gameModal}
-                        hideModal={this.hideModal}
-                    />*/}
                 </div>
             </div>
         )

@@ -8,7 +8,6 @@ import Other from './Other';
 const Players = (props) => {
     return (
         <div>
-            <button onClick={props.handleReset}>reset</button>
             {props.players.length === 0 && <p>Add a player</p>}
             <ul className="player">
                 {props.players.map((p, i) => {
