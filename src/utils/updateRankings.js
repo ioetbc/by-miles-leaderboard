@@ -6,7 +6,12 @@ function updateRankings({ winner, loser, losersScore }) {
     const actualScoreDiff = 21 - Math.min(losersScore, 19);
     const totalRankingChange = actualScoreDiff - expectedScoreDiff;
 
-    const totalGames = winner.gamesCount + loser.gamesCount;
+    let totalGames = winner.gamesCount + loser.gamesCount;
+    if (!totalGames) {
+        totalGames = 2;
+        winner.gamesCount = 1;
+        loser.gamesCount = 1;
+    }
 
     const winnersRanking = winnerPrevRanking + Math.round(totalRankingChange * (loser.gamesCount / totalGames));
     const losersRanking = loserPrevRanking - Math.round(totalRankingChange * (winner.gamesCount / totalGames));
