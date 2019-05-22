@@ -1,8 +1,5 @@
 import React from 'react';
-
-import AddOption from './AddOption';
 import Players from './Players';
-import Header from './Header';
 
 import "../styles/style.scss";
 
@@ -84,17 +81,14 @@ class Leaderboard extends React.Component {
         const { playerArr, gameModal } = this.state;
 
         return (
-            <div>
-                <Header title="Leaderboard" />
-                <div className="container">
-                    <Players
-                        handleReset={this.handleReset}
-                        handleDelete={this.handleDelete}
-                        playerArr={playerArr}
-                        handleWinOrLose={this.handleWinOrLose}
-                        handleDetails={this.handleDetails}
-                    />
-                </div>
+            <div className="container">
+                <Players
+                    handleReset={this.handleReset}
+                    handleDelete={this.handleDelete}
+                    playerArr={playerArr}
+                    handleWinOrLose={this.handleWinOrLose}
+                    handleDetails={this.handleDetails}
+                />
             </div>
         )
     }
