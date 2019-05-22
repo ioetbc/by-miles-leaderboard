@@ -40,11 +40,11 @@ export const won = (opponentId) => {
             db.collection('games').add({
                 winner: {
                     uid: me.uid,
-                    name: me.displayName
+                    name: me.name
                 },
                 loser: {
                     uid: opponent.uid,
-                    name: opponent.displayName
+                    name: opponent.name
                 },
                 playedAt: firebase.firestore.Timestamp.fromDate(new Date())
             });
