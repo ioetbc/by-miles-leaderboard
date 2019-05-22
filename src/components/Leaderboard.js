@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Players from './Players';
-import Header from './Header';
 import Games from './Games'
 
 
@@ -86,7 +85,6 @@ class Leaderboard extends React.Component {
 
         return (
             <div>
-                <Header title="Leaderboard" />
                 <div className="container">
                     <Players
                         handleReset={this.handleReset}
