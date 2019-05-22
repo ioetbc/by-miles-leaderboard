@@ -5,12 +5,13 @@ import { won } from '../actions/players';
 class Opponent extends Component {
     render () {
         const { position, name } = this.props.opponent;
+        const firstName = name.split(' ')[0];
         return (
-            <div className="card">
+            <div className="pill-wrapper">
                 <div className="pill">
-                    <span>{name}</span>
-                    <span>Games won: {position}</span>
-                    <span><button onClick={() => { this.props.won(this.props.opponent.uid) } }>won</button></span>
+                <span>{firstName}</span>
+                <span>{position}st</span>
+                <span>details</span>
                 </div>
             </div>
         )
