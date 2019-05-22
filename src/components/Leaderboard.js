@@ -1,8 +1,8 @@
 import React from 'react';
 
-import AddOption from './AddOption';
 import Players from './Players';
-import Header from './Header';
+import Games from './Games'
+
 
 import "../styles/style.scss";
 
@@ -85,7 +85,6 @@ class Leaderboard extends React.Component {
 
         return (
             <div>
-                <Header title="Leaderboard" />
                 <div className="container">
                     <Players
                         handleReset={this.handleReset}
@@ -95,6 +94,7 @@ class Leaderboard extends React.Component {
                         handleDetails={this.handleDetails}
                     />
                 </div>
+                <Games />
             </div>
         )
     }

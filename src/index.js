@@ -6,6 +6,7 @@ import { history } from './routers/AppRouter';
 import { firebase, subscribe } from './firebase';
 import { login, logout } from './actions/auth';
 import { startSetPlayers } from './actions/players';
+import { startSetGames } from './actions/games';
 import configureStore from './store/configureStore';
 export const store = configureStore()
 
@@ -28,6 +29,7 @@ firebase.auth().onAuthStateChanged(user => {
         store.dispatch(login(user))
         store.dispatch(startSetPlayers())
         store.dispatch(startSetPlayers());
+        store.dispatch(startSetGames());
         renderApp()
 
     if (history.location.pathname === '/') {

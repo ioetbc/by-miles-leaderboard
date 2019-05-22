@@ -45,8 +45,14 @@ export const won = (opponentId, losersScore) => {
         });
         return batch.commit().then(() => {
             db.collection('games').add({
-                winner: me.uid,
-                loser: opponent.uid,
+                winner: {
+                    uid: me.uid,
+                    name: me.name
+                },
+                loser: {
+                    uid: opponent.uid,
+                    name: opponent.name
+                },
                 playedAt: firebase.firestore.Timestamp.fromDate(new Date())
             });
         })
