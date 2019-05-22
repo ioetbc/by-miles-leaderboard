@@ -4,7 +4,7 @@ import moment from 'moment';
 
 class Other extends Component {
     render () {
-        const { name, position, photoURL } = this.props.player;
+        const { name, position, photoURL, ranking } = this.props.player;
         const firstName = name.split(' ')[0];
         console.log('other position', position)
         console.log('other', moment(position).format('Do'))
@@ -14,6 +14,7 @@ class Other extends Component {
                 <span><img className="thumbnail-image" src={photoURL} /></span>
                 <span>{firstName}</span>
                 <span>{moment(position).format('do')}</span>
+                <span>Ranking: {ranking}</span>
                 <span>details</span>
                 </div>
             </div>

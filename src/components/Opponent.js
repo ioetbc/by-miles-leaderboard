@@ -21,15 +21,16 @@ class Opponent extends Component {
     }
 
     render () {
-        const { position, name, photoURL } = this.props.opponent;
+        const { position, name, photoURL, ranking } = this.props.opponent;
         const firstName = name.split(' ')[0];
         console.log('opponent position', position)
-        return (
+        return [
             <div className="pill-wrapper">
                 <div className="pill">
                 <span><img className="thumbnail-image" src={photoURL} /></span>
                 <span>{firstName}</span>
                 <span>{moment(position).format('do')}</span>
+                <span>Ranking: {ranking}</span>
                 <input
                     type="number"
                     onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}
@@ -37,10 +38,10 @@ class Opponent extends Component {
                 <span><button onClick={this.submitWin}>won</button></span>
                 <span>details</span>
                 </div>
-                {this.state.error &&
-                    <h3>Take this chance to gloat. Input the losers score first</h3>}
-            </div>
-        )
+            </div>,
+            this.state.error &&
+                <h3>Take this chance to gloat. Input the losers score first</h3>,
+        ]
     }
 };
 
