@@ -13,7 +13,7 @@ class Opponent extends Component {
 
     submitWin() {
         const { losersScore, error } = this.state;
-        if (typeof loserScore !== 'number') this.setState({ error: true });
+        if (typeof losersScore !== 'number') this.setState({ error: true });
         else {
             if (error) this.setState({ error: false });
             this.props.won(this.props.opponent.uid, losersScore);
@@ -32,7 +32,7 @@ class Opponent extends Component {
                 <span>{moment(position).format('do')}</span>
                 <input
                     type="number"
-                    onChange={(losersScore) => this.setState({ losersScore })}
+                    onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}
                 />
                 <span><button onClick={this.submitWin}>won</button></span>
                 <span>details</span>
