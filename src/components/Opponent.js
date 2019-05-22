@@ -45,7 +45,7 @@ class Opponent extends Component {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    won: (opponet) => dispatch(won(opponet))
+    won: (opponet, losersScore) => dispatch(won(opponet, losersScore))
 })
 
 export default connect(undefined, mapDispatchToProps)(HOCPlayer(Opponent))
