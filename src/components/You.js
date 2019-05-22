@@ -3,13 +3,12 @@ import { ReactComponent as Tick } from '../assets/tick.svg';
 
 class You extends Component {
     render () {
-        const { position, name } = this.props.player;
-
+        const { position, name, photoURL } = this.props.player;
         const firstName = name.split(' ')[0];
         return (
             <div className="pill-wrapper">
                 <div className="pill">
-
+                    <span><img className="thumbnail-image" src={photoURL} /></span>
                     <span>{firstName}</span>
                     <span>{position}st</span>
                     <span>details</span>

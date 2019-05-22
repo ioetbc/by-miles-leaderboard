@@ -4,11 +4,12 @@ import { won } from '../actions/players';
 
 class Opponent extends Component {
     render () {
-        const { position, name } = this.props.opponent;
+        const { position, name, photoURL } = this.props.opponent;
         const firstName = name.split(' ')[0];
         return (
             <div className="pill-wrapper">
                 <div className="pill">
+                <span><img className="thumbnail-image" src={photoURL} /></span>
                 <span>{firstName}</span>
                 <span>{position}st</span>
                 <span>details</span>

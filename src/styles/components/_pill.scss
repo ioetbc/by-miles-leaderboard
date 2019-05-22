@@ -21,14 +21,18 @@
         border-radius: 4px;
         display: flex;
         justify-content: space-around;
+        align-items: center;
         margin-bottom: 30px;
-        width: 80%;
-        // display: inline-block;
+        width: 80%; 
+        .thumbnail-image {
+            width: 40px;
+            border-radius: 50%;
+        }
     }
     .signed-in {
         margin-left: 30px;
         position: absolute;
-        top: 24px;
+        top: 37px;
         right: -12px;
     }
 }
