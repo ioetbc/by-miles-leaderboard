@@ -1,17 +1,20 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import moment from 'moment'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { find } from 'lodash';
 
 export class Games extends Component {
 
     render() {
+        const { index, games} = this.props;
+        const gamesPlayed = games.filter(game => game.winner.uid === index || game.loser.uid === index);
+    
         return (
             <div>
                 <h3>Games</h3>
                 <ol>
-                    {this.props.games.map((game, i) => {
+                    {gamesPlayed.map((game, i) => {
                         return (
-                            <li key={i}>
+                            <li index={i}>
                                 <p>{game.winner.name} (winner) vs {game.loser.name}</p>
                             </li>
                         )

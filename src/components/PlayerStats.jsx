@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-
+import Games from './Games';
 export class PlayerStats extends Component {
-
     render() {
+        const { name, index } = this.props;
         return (
-            <div>
-                ----- TODO: FILL WITH PETER'S SCIENCE ------
+            <div className="stats">
+                <Games name={name} index={index} />
             </div>
         )
     }

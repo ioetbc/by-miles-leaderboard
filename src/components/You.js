@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { ReactComponent as Tick } from '../assets/tick.svg';
-import HOCPlayer from './HOCPlayer'
+import PlayerStats from './PlayerStats'
+
 
 class You extends Component {
+    state = { showStats: false }
+    toggleStats = () => this.setState({ showStats: !this.state.showStats })
     render () {
         const { position, name, photoURL, ranking } = this.props.player;
+        const { index } = this.props;
+        const { showStats } = this.state;
         const firstName = name.split(' ')[0];
-        console.log('you position', position)
+
         return (
             <div className="pill-wrapper">
                 <div className="pill">
@@ -15,7 +20,10 @@ class You extends Component {
                     <span>{firstName}</span>
                     <span>{moment(position).format('do')}</span>
                     <span>Ranking: {ranking}</span>
-                    <span>details</span>
+                    <span onClick={this.toggleStats}>details</span>
+                    {showStats &&
+                        <PlayerStats name={name} index={index} />
+                    }
                 </div>
                 <span className="signed-in"><Tick /></span>
             </div>
@@ -23,4 +31,4 @@ class You extends Component {
     }
 };
 
-export default HOCPlayer(You);
+export default You;

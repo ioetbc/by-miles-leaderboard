@@ -6,8 +6,6 @@ const wrapper = (WrapperComponent) => {
 
         state = { showStats: false }
 
-        toggleStats = () => this.setState({showStats: !this.state.showStats})
-
         render() {
             return (
                 <div onClick={this.toggleStats} >

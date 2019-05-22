@@ -13,7 +13,7 @@ const Players = (props) => {
                 if (p.uid === props.auth.uid) {
                     return (
                         <You
-                            key={p.uid}
+                            index={p.uid}
                             player={p}
                         />
                     )

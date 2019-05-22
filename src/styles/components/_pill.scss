@@ -21,6 +21,7 @@
         border-radius: 4px;
         display: flex;
         justify-content: space-around;
+        flex-wrap: wrap;
         align-items: center;
         margin-bottom: 30px;
         width: 80%; 
@@ -36,6 +37,13 @@
             text-transform: uppercase;
             box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
             font-weight: 700;
+        }
+        .stats {
+            width: 100%;
+        }
+        ol {
+            max-height: 200px;
+            overflow-y: scroll;
         }
     }
     .signed-in {
