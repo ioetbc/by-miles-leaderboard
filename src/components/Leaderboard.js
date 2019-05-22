@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Players from './Players';
-import Games from './Games'
+import Games from './PlayerGames'
 
 
 import "../styles/style.scss";
