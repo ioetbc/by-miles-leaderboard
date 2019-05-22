@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ReactComponent as Tick } from '../assets/tick.svg';
+import HOCPlayer from './HOCPlayer'
 
 class You extends Component {
     render () {
@@ -19,4 +20,4 @@ class You extends Component {
     }
 };
 
-export default You;
+export default HOCPlayer(You);

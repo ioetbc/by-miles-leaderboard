@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import HOCPlayer from './HOCPlayer';
 
 class Other extends Component {
     render () {
@@ -18,4 +19,4 @@ class Other extends Component {
 };
 
 
-export default Other;
+export default HOCPlayer(Other);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import HOCPlayer from './HOCPlayer'
 import { won } from '../actions/players';
 
 class Opponent extends Component {
@@ -23,4 +24,4 @@ const mapDispatchToProps = (dispatch) => ({
     won: (opponet) => dispatch(won(opponet))
 })
 
-export default connect(undefined, mapDispatchToProps)(Opponent)
+export default connect(undefined, mapDispatchToProps)(HOCPlayer(Opponent))
