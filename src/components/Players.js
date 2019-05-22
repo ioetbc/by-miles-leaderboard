@@ -8,6 +8,7 @@ import Other from './Other';
 const Players = (props) => {
     return (
         <div className="player">
+        <FlipMove>
             {props.players.map((p, i) => {
                 if (p.uid === props.auth.uid) {
                     return (
@@ -31,8 +32,8 @@ const Players = (props) => {
                         player={p}
                     />
                 )
-
             })}
+        </FlipMove>
         </div>
     )
 };
