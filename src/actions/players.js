@@ -33,13 +33,13 @@ export const won = (opponentId, losersScore) => {
         const batch = db.batch();
         batch.update(db.collection('players').doc(me.uid), {
             position: opponent.position,
-            gameCount: me.gameCount ++,
+            gameCount: me.gameCount + 1,
             ranking: winnersRanking,
             lastPlayed: firebase.firestore.Timestamp.fromDate(new Date())
         });
         batch.update(db.collection('players').doc(opponentId),{
             position: me.position,
-            gameCount: opponent.gameCount ++,
+            gameCount: opponent.gameCount + 1,
             ranking: losersRanking,
             lastPlayed: firebase.firestore.Timestamp.fromDate(new Date())
         });

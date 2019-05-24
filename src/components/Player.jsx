@@ -6,9 +6,19 @@ import PlayerDetails from './PlayerDetails'
 import { won } from '../actions/players'
 
 class Player extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { losersScore: null, error: false, showStats: false };
+        this.submitWin = this.submitWin.bind(this);
+    }
 
-    state = {
-        showStats: false
+     submitWin() {
+        const { losersScore, error } = this.state;
+        if (typeof losersScore !== 'number') this.setState({ error: true });
+        else {
+            if (error) this.setState({ error: false });
+            this.props.won(this.props.player.uid, losersScore);
+        }
     }
 
     toggleStats = () => this.setState({showStats: !this.state.showStats})
@@ -21,19 +31,27 @@ class Player extends Component {
         if (players[i + 1] && players[i + 1].uid === auth.uid) type = 'opponent'
         const { position, name, photoURL } = player;
         const firstName = name.split(' ')[0];
-        return (
+        return [
             <div className="pill-wrapper" onClick={this.toggleStats}>
                 <div className="pill">
                     <span><img className="thumbnail-image" src={photoURL} /></span>
                     <span>{firstName}</span>
                     <span>{moment(position).format('do')}</span>
                     <span>details</span>
+                    <span>Ranking: {player.ranking}</span>
                 </div>
-                {type === 'opponent' && <span><button className="won-button" onClick={() => { this.props.won(player.uid) } }>won</button></span>}
+                {type === 'opponent' &&
+                    <input
+                        type="number"
+                        onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}
+                    />}
+                {type === 'opponent' && <span><button className="won-button" onClick={this.submitWin}>won</button></span>}
                 {type === 'you' && <span className="signed-in"><Tick /></span>}
                 {this.state.showStats && <PlayerDetails games={games} /> }
-            </div>
-        );
+            </div>,
+            this.state.error &&
+                <h4>Take this chance to gloat. Input the losers score first</h4>,
+        ];
     }
 };
 
@@ -44,7 +62,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    won: (opponet) => dispatch(won(opponet))
+    won: (opponet, losersScore) => dispatch(won(opponet, losersScore))
 })
 
 
