@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import moment from 'moment'
 
 export class PlayerGames extends Component {
 
     state = { showStats: false }
 
     render() {
-        const { auth, games=[] } = this.props
+        const { games=[] } = this.props
         return (
             <div>
                 <h3>Games</h3>
@@ -25,12 +23,4 @@ export class PlayerGames extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    auth: state.auth
-})
-
-const mapDispatchToProps = {
-    
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PlayerGames)
+export default PlayerGames

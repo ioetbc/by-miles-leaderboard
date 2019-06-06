@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import moment from 'moment';
 import { ReactComponent as Tick } from '../assets/tick.svg';
 import PlayerDetails from './PlayerDetails'
 import { won } from '../actions/players'
