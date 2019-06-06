@@ -34,23 +34,21 @@ class Player extends Component {
         return [
             <div className="pill-wrapper" onClick={this.toggleStats}>
                 <div className="pill">
+                    <span>{position}</span>
                     <span><img className="thumbnail-image" src={photoURL} /></span>
                     <span>{firstName}</span>
-                    <span>{moment(position).format('do')}</span>
-                    <span>details</span>
                     <span>Ranking: {player.ranking}</span>
+                    {type === 'opponent' &&
+                        <input
+                            type="number"
+                            onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}
+                        />}
+                    {type === 'opponent' && <span><button className="won-button" onClick={this.submitWin}>won</button></span>}
                 </div>
-                {type === 'opponent' &&
-                    <input
-                        type="number"
-                        onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}
-                    />}
-                {type === 'opponent' && <span><button className="won-button" onClick={this.submitWin}>won</button></span>}
                 {type === 'you' && <span className="signed-in"><Tick /></span>}
-                {this.state.showStats && <PlayerDetails games={games} /> }
             </div>,
-            this.state.error &&
-                <h4>Take this chance to gloat. Input the losers score first</h4>,
+            this.state.showStats && <PlayerDetails games={games} />,
+            this.state.error && <h4>Take this chance to gloat. Input the losers score first</h4>
         ];
     }
 };
