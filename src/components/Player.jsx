@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import moment from 'moment';
 import { ReactComponent as Tick } from '../assets/tick.svg';
 import { won } from '../actions/players'
 
 class Player extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { losersScore: null, error: false, showStats: false };
+        this.submitWin = this.submitWin.bind(this);
+    }
 
-    state = {
-        showStats: false
+     submitWin() {
+        const { losersScore, error } = this.state;
+        if (typeof losersScore !== 'number') this.setState({ error: true });
+        else {
+            if (error) this.setState({ error: false });
+            this.props.won(this.props.player.uid, losersScore);
+        }
     }
 
     toggleStats = () => this.setState({ showStats: !this.state.showStats })
@@ -22,13 +31,20 @@ class Player extends Component {
         if (players[i + 1] && players[i + 1].uid === auth.uid) type = 'opponent'
         const { position, name, photoURL } = player;
         const firstName = name.split(' ')[0];
+
         return (
-            <div className={!showStats ? 'pill': 'pill pill-wrapper'}>
+            <div onClick={this.toggleStats} className={!showStats ? 'pill': 'pill pill-wrapper'}>
+                <span>{position}</span>
                 <span><img className="thumbnail-image" src={photoURL} /></span>
                 <span>{firstName}</span>
-                <span>{moment(position).format('do')}</span>
-                <span onClick={this.toggleStats} style={{ cursor: 'pointer' }}>details</span>
-                {type === 'opponent' && <span><button className="won-button" onClick={() => { this.props.won(player.uid) } }>won</button></span>}
+                <span>Ranking: {player.ranking}</span>
+                {type === 'opponent' &&
+                    <input
+                        type="number"
+                        onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}
+                    />}
+                {type === 'opponent' && <span><button className="won-button" onClick={this.submitWin}>won</button></span>}
+                {type === 'you' && <span className="signed-in"><Tick /></span>}
                 <div className="stats">
                     <h3>Games</h3>
                     <ol>
@@ -43,7 +59,7 @@ class Player extends Component {
                         })}
                     </ol>
                 </div>
-                {type === 'you' && <span className="signed-in"><Tick /></span>}
+                {this.state.error && <h4>Take this chance to gloat. Input the losers score first</h4>}
             </div>
         );
     }
@@ -56,7 +72,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    won: (opponet) => dispatch(won(opponet))
+    won: (opponet, losersScore) => dispatch(won(opponet, losersScore))
 })
 
 

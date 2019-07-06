@@ -1,7 +1,6 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history'
-// const createHistory = require("history").createBrowserHistory
 import LoginPage from '../components/Login'
 import NotFoundPage from '../components/NotFoundPage';
 import Leaderboard from '../components/Leaderboard';
