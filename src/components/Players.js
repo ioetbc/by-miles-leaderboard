@@ -1,46 +1,28 @@
 import React from 'react';
 import FlipMove from 'react-flip-move';
 import { connect } from 'react-redux';
-import You from './You';
-import Opponent from './Opponent';
-import Other from './Other';
+import Player from './Player'
 
 const Players = (props) => {
     return (
         <div className="player">
-        <FlipMove>
-            {props.players.map((p, i) => {
-                if (p.uid === props.auth.uid) {
+            <FlipMove>
+                {props.players.map((p, i) => {
                     return (
-                        <You
-                            index={p.uid}
+                        <Player
+                            key={p.uid}
+                            i={i}
                             player={p}
                         />
                     )
-                }
-                if (props.players[i + 1] && props.players[i + 1].uid === props.auth.uid) {
-                    return (
-                        <Opponent
-                            key={p.uid}
-                            opponent={p}
-                        />
-                    )
-                }
-                return (
-                    <Other
-                        key={p.uid}
-                        player={p}
-                    />
-                )
-            })}
-        </FlipMove>
+                })}
+            </FlipMove>
         </div>
     )
 };
 
 const mapStateToProps = (state) => ({
-    players: state.players,
-    auth: state.auth,
+    players: state.players
 })
 
 export default connect(mapStateToProps)(Players)
