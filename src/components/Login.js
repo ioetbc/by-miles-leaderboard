@@ -14,7 +14,8 @@ export class LoginPage extends React.Component {
 
   render() {
     return (
-    <div id="login-page">
+    <div className="login-page">
+        <p>Login using your By Miles email address.</p>
         <button className="login-button" onClick={this.handleGoogleLogin}>Google Login</button>
     </div>
     )

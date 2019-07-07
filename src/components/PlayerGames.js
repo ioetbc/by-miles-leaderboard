@@ -7,7 +7,7 @@ export class PlayerGames extends Component {
     render() {
         const { games=[] } = this.props
         return (
-            <div>
+            <div className="stats">
                 <h3>Games</h3>
                 <ol>
                     {games.map((game, i) => {
