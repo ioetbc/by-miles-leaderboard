@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "by-miles-leaderboard"
+    "default": "by-miles-leaderboard",
+    "dev": "by-miles-leaderboard-dev"
   }
 }
