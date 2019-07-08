@@ -13,7 +13,11 @@ class Player extends Component {
 
      submitWin() {
         const { losersScore, error } = this.state;
-        this.props.won(this.props.player.uid, losersScore);
+        if (typeof losersScore !== 'number') this.setState({ error: true });
+        else {
+            if (error) this.setState({ error: false });	
+            this.props.won(this.props.player.uid, losersScore);
+        }
     }
 
     toggleStats = () => this.setState({ showStats: !this.state.showStats })
@@ -48,28 +52,35 @@ class Player extends Component {
         const firstName = name.split(' ')[0];
 
         return ([
-            <div onClick={this.toggleStats} className={!showStats ? 'pill': 'pill pill-wrapper'}>
-                <span className="position">{this.ordinalSuffix(position)}</span>
-                <span><img className="thumbnail-image" src={photoURL} /></span>
-                <span>{firstName}</span>
-                <span>Ranking: {player.ranking}</span>
-                <div className="stats">
-                    <h3>Games played</h3>
-                    <ul>
-                        {games.map((game, i) => {
-                            if (game.winner.uid == auth.uid) {
-                                return (
-                                    <li key={i}>
-                                        <p><strong>{game.winner.name}</strong> vs {game.loser.name}</p>
-                                    </li>
-                                )
-                            }
-                        })}
-                    </ul>
-                </div>
-            </div>,
-            position === 1 && <span className="signed-in"><Trophy /></span>,
-            type === 'opponent' && <span className="signed-in"><button className="won-button" onClick={this.submitWin}>won</button></span>,
+                <div onClick={this.toggleStats} className={!showStats ? 'pill': 'pill pill-wrapper'}>
+                    <span className="position">{this.ordinalSuffix(position)}</span>
+                    <span><img className="thumbnail-image" src={photoURL} /></span>
+                    <span>{firstName}</span>
+                    <span>Ranking: {player.ranking}</span>
+                    {type === 'opponent' && [
+                        <input	                    
+                            type="number"	                   
+                            onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}	               
+                        />,
+                        <span className="signed-in"><button className="won-button" onClick={this.submitWin}>won</button></span>,
+                    ]}
+                    <div className="stats">
+                        <h3>Games played</h3>
+                        <ul>
+                            {games.map((game, i) => {
+                                if (game.winner.uid == auth.uid) {
+                                    return (
+                                        <li key={i}>
+                                            <p><strong>{game.winner.name}</strong> vs {game.loser.name}</p>
+                                        </li>
+                                    )
+                                }
+                            })}
+                        </ul>
+                    </div>
+                    {position === 1 && <span className="trophy"><Trophy /></span>}
+                </div>,
+                this.state.error && <h4>Take this chance to gloat. Input the losers score first</h4>,
         ]);
     }
 };
