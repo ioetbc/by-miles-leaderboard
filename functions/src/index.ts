@@ -14,7 +14,8 @@ export const createPlayer = functions.auth.user().onCreate((user, context) => {
             email: user.email,
             photoURL: user.photoURL,
             position: snapshot.size + 1,
-            gameCount: 0
+            gameCount: 0,
+            ranking: 0
         };
         return db.collection('players').doc(user.uid).set(newPlayer).catch((error) => console.log(error));
     }).catch((error) => console.log(error));
