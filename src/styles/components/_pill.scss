@@ -85,17 +85,16 @@
     right: -22px;
     margin-top: 45px;
     width: 30px;
+}
 
-    .won-button {
-        background: #1de9b6;
-        border: none;
-        border-radius: 12px;
-        padding: 4px 17px;
-        text-transform: uppercase;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
-        font-weight: 700;
-    }
-
+.won-button {
+    background: #1de9b6;
+    border: none;
+    border-radius: 12px;
+    padding: 4px 17px;
+    text-transform: uppercase;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+    font-weight: 700;
 }
 
 .position {
@@ -106,8 +105,20 @@
 }
 
 .trophy {
-    width: 20px;
+    margin-left: 30px;
     position: absolute;
-    left: -50px;
-    top: 48px;
+    right: -22px;
+    margin-top: 5px;
+    width: 30px;
+}
+
+.dropdown {
+    background: #ffffff;
+    border: none;
+    border-radius: 12px;
+    text-transform: uppercase;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+    font-weight: 700;
+    width: 50px;
+    height: 22px
 }
