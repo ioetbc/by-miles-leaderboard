@@ -52,11 +52,12 @@ class Player extends Component {
         const firstName = name.split(' ')[0];
 
         return ([
-                <div onClick={this.toggleStats} className={!showStats ? 'pill': 'pill pill-wrapper'}>
+                <div className={!showStats ? 'pill': 'pill pill-wrapper'}>
                     <span className="position">{this.ordinalSuffix(position)}</span>
                     <span><img className="thumbnail-image" src={photoURL} /></span>
                     <span>{firstName}</span>
                     <span>Ranking: {player.ranking}</span>
+                    <span onClick={this.toggleStats}>details</span>
                     {type === 'opponent' && [
                         <select className="dropdown" onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}	 >
                             <option value="1">1</option>
