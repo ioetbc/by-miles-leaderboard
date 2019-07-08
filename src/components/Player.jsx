@@ -58,7 +58,7 @@ class Player extends Component {
                     <span>{firstName}</span>
                     <span>Ranking: {player.ranking}</span>
                     {type === 'opponent' && [
-                        <select onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}	 >
+                        <select className="dropdown" onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}	 >
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
