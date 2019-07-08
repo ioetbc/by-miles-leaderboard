@@ -58,11 +58,30 @@ class Player extends Component {
                     <span>{firstName}</span>
                     <span>Ranking: {player.ranking}</span>
                     {type === 'opponent' && [
-                        <input	                    
-                            type="number"	                   
-                            onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}	               
-                        />,
-                        <span className="signed-in"><button className="won-button" onClick={this.submitWin}>won</button></span>,
+                        <select onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}	 >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="4">5</option>
+                            <option value="4">6</option>
+                            <option value="4">7</option>
+                            <option value="4">8</option>
+                            <option value="4">9</option>
+                            <option value="4">10</option>
+                            <option value="4">11</option>
+                            <option value="4">12</option>
+                            <option value="4">13</option>
+                            <option value="4">14</option>
+                            <option value="4">15</option>
+                            <option value="4">16</option>
+                            <option value="4">17</option>
+                            <option value="4">18</option>
+                            <option value="4">19</option>
+                            <option value="4">20</option>
+                            <option value="4">21</option>
+                        </select>,
+                        <button className="won-button" onClick={this.submitWin}>won</button>
                     ]}
                     <div className="stats">
                         <h3>Games played</h3>
