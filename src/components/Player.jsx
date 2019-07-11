@@ -54,6 +54,7 @@ class Player extends Component {
         return ([
                 <div className={!showStats ? 'pill': 'pill pill-wrapper'}>
                     <span className="position">{this.ordinalSuffix(position)}</span>
+                    {position === 1 && <span className="trophy"><Trophy /></span>}
                     <span><img className="thumbnail-image" src={photoURL} /></span>
                     <span>{firstName}</span>
                     <span>rank: {player.ranking}</span>
@@ -61,6 +62,7 @@ class Player extends Component {
                     {type === 'opponent' && 
                         <div className="opponent-cta">
                             <select className="dropdown" onChange={({ target }) => this.setState({ losersScore: parseInt(target.value), error: false })}	 >
+                                <option default value="0">Looses score</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -100,7 +102,6 @@ class Player extends Component {
                             })}
                         </ul>
                     </div>
-                    {position === 1 && <span className="trophy"><Trophy /></span>}
                 </div>,
                 this.state.error && <h4>Take this chance to gloat. Input the losers score first</h4>,
         ]);

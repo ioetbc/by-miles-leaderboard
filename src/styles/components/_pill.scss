@@ -113,16 +113,16 @@
     @media screen and (min-width: 768px) {
         display: block;
         position: absolute;
-        right: -80px;
-        margin-top: 5px;
-        width: 30px;
+        left: -134px;
+        top: 44px;
+        width: 26px;
     }
 }
 
 .opponent-cta {
     @media screen and (min-width: 768px) {
         position: absolute;
-        right: -160px;
+        right: -243px;
     }
     .dropdown {
         background: #ffffff;
@@ -131,7 +131,7 @@
         text-transform: uppercase;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
         font-weight: 700;
-        width: 50px;
+        width: 120px;
         height: 22px
     }
     .won-button {
