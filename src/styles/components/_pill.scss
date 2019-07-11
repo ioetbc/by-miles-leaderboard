@@ -1,13 +1,19 @@
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    @media screen and (min-width: 768px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
     .player {
-        padding: 0;
-        width: 80rem;
-        text-align: center;
-        height: 700px;
+        width: 100%;
+        @media screen and (min-width: 768px) {
+            width: 50%;
+            text-align: center;
+            height: 700px;
+            padding: 0;
+        }
+
         .pill {
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
             padding: 30px 20px;
@@ -17,18 +23,23 @@
             flex-wrap: wrap;
             align-items: center;
             margin-bottom: 30px;
-            width: 80%; 
             margin: 0 auto 30px auto;
             background: #EEEEEE;
             max-height: 200px;
             overflow: hidden;
             transition:max-height 0.3s ease-out;
-            cursor: pointer;
 
             &.pill-wrapper {    
                 max-height: 600px;
                 .stats {
                     display: block;
+                }
+            }
+
+            .details {
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
                 }
             }
 
@@ -75,7 +86,6 @@
                 overflow-y: auto;
             }
         }
-        
     }
 }
 
@@ -87,38 +97,52 @@
     width: 30px;
 }
 
-.won-button {
-    background: #1de9b6;
-    border: none;
-    border-radius: 12px;
-    padding: 4px 17px;
-    text-transform: uppercase;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
-    font-weight: 700;
-}
 
 .position {
-    margin-right: 30px;
+    display: none;
+    @media screen and (min-width: 768px) {
+        display: block;
+    }
     position: absolute;
-    left: -12px;
+    left: -80px;
     margin-top: 6px;
 }
 
 .trophy {
-    margin-left: 30px;
-    position: absolute;
-    right: -22px;
-    margin-top: 5px;
-    width: 30px;
+    display: none;
+    @media screen and (min-width: 768px) {
+        display: block;
+        position: absolute;
+        left: -134px;
+        top: 44px;
+        width: 26px;
+    }
 }
 
-.dropdown {
-    background: #ffffff;
-    border: none;
-    border-radius: 12px;
-    text-transform: uppercase;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
-    font-weight: 700;
-    width: 50px;
-    height: 22px
+.opponent-cta {
+    @media screen and (min-width: 768px) {
+        position: absolute;
+        right: -243px;
+    }
+    .dropdown {
+        background: #ffffff;
+        border: none;
+        border-radius: 12px;
+        text-transform: uppercase;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+        font-weight: 700;
+        width: 120px;
+        height: 22px
+    }
+    .won-button {
+        background: #1de9b6;
+        border: none;
+        border-radius: 12px;
+        padding: 4px 17px;
+        text-transform: uppercase;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+        font-weight: 700;
+        position: relative;
+        right: -22px;
+    }
 }
